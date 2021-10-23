@@ -33,10 +33,10 @@ function preload(){
 }
 
 function setup() {
-createCanvas(windowWidth,windowHeight);
+createCanvas(displayWidth,displayHeight);
   
  
-bat=createSprite(windowWidth/2,windowHeight/2,30,50);
+bat=createSprite(displayWidth/2,displayHeight/2,30,50);
 bat.addImage(batImg)
 
 bat.scale=2;
@@ -56,14 +56,14 @@ bat.y=World.mouseY;
 
 //Displaying instructions of the game in gameState 1
 if(gameState==1){
-  textSize(60);
-  image(TTImg,0,0,windowWidth,windowHeight)
+  textSize(40);
+  image(TTImg,0,0,displayWidth,displayHeight)
   fill("white");
-  text("Allow bat to collect treats by moving mouse pointer.",displayWidth/2,displayHeight/2);
-  text("Beware from ghost!!Game ends if bat touches the ghost. ",displayWidth/2,displayHeight/2+60);
-  text("Hit 'Enter' to start the game... ",displayWidth/2,displayHeight/2+120);
-  textSize(200)
-  text("Happy Halloween",displayWidth/2,displayHeight/2+400);
+  text("Allow bat to collect treats by moving mouse pointer.",displayWidth/6,displayHeight/4+50);
+  text("Beware from ghost!!Game ends if bat touches the ghost. ",displayWidth/2-400,displayHeight/4+120);
+  text("Hit 'Enter' to start the game... ",displayWidth/2-300,displayHeight/2);
+  textSize(60)
+  text("Happy Halloween",displayWidth/2,displayHeight-200);
     
   if(keyDown("Enter")&&gameState==1){
     gameState=2
@@ -73,10 +73,10 @@ if(gameState==1){
 
 //Actual Game play in gameState 2
 if(gameState==2){
-  image(bgImg,0,0,windowWidth,windowHeight);
+  image(bgImg,0,0,displayWidth,displayHeight);
   textSize(50);
   fill("white");
-  text("Score : "+score,windowWidth/2,50);
+  text("Score : "+score,displayWidth/2,50);
   serveTreat();
   ghostCall();
 }
@@ -86,9 +86,9 @@ if(gameState==3){
   background(endbgImg)
   textSize(40)
   fill("black")
-  text("Score : "+score,windowWidth/2,50);
-  text("Hit 'Enter' to restart the game ",windowWidth/2-200,90);
-  image(theEndImg,windowWidth-500,50,200,200) 
+  text("Score : "+score,50,50);
+  text("Hit 'Enter' to restart the game ",displayWidth/4,50);
+  image(theEndImg,displayWidth-500,50,200,200) 
   }
 //Restarting the game
 if(keyDown("Enter")&&gameState==3){
@@ -103,7 +103,7 @@ if(keyDown("Enter")&&gameState==3){
 function serveTreat(){
 //creating treats after some intervals and adding them in the group
 if(frameCount%20===0){
-  var candy=createSprite(random(10,windowWidth-10), 0,50, 50);
+  var candy=createSprite(random(10,displayWidth-10), 0,50, 50);
   candyGroup.add(candy)
   candy.velocityX=random(4,-4,8,-8)
   candy.velocityY=random(4,2,-2)
@@ -131,7 +131,7 @@ if(frameCount%20===0){
 //Function for random creation of ghost sprite afer some interval
 function ghostCall(){
 if(frameCount%40===0){
-  ghost=createSprite(random(50,windowWidth-50),0,20,30);
+  ghost=createSprite(random(50,displayWidth-50),0,20,30);
   ghost.addImage("ghost",random([yellowghost,blueghost,yellowghost,greenghost,blueghost]));
   ghost.scale=0.5;
 
