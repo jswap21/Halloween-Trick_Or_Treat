@@ -1,1 +1,1 @@
-# Halloween-Trick_Or_Treat
+This is Halloween theme game.
