@@ -107,6 +107,7 @@ if(frameCount%20===0){
   candyGroup.add(candy)
   candy.velocityX=random(4,-4,8,-8)
   candy.velocityY=random(4,2,-2)
+  candy.scale=0.5
  
   //applying random image
   candy.addImage(random([candy1,candy2,candy3,choco1,choco2,choco3,teddy1,teddy2]))
